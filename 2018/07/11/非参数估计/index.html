@@ -59,7 +59,7 @@
 </head>
 
 <!--
-<body class="home-template">
+<body class="post-template">
 -->
 <body id="index" class="lightnav animsition">
 
@@ -167,156 +167,105 @@
         <!-- ============================ Header & Logo bar =========================== -->
 
 
-      <!-- ============================ Hero Image =========================== -->
-
-<section id="hero" class="scrollme">
-    <div class="container-fluid element-img" style="background: url(/img/bg_img2.jpg) no-repeat center center fixed;background-size: cover">
-        <div class="row">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
-                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
-                    <div>
-                        
-                        <h2>Welcome to <span>MaxRumi</span>'s Blog</h2>
-                        <p></p>
-                        
-                        <h2></h2>
-                        <p>Please come, here is a road</p>
-                        
-
-                    </div>
-                </div>
-            </div>
-            <!-- // .col-md-12 -->
-        </div>
-        <div class="herofade beige-dk"></div>
-    </div>
-</section>
-
-<!-- Height spacing helper -->
-<div class="heightblock"></div>
-<!-- // End height spacing helper -->
-
-<!-- ============================ END Hero Image =========================== -->
-<!-- ============================ Content =========================== -->
-
+      
 <section id="intro">
     <div class="container">
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2018/07/11/非参数估计/"></a></h3>
-                    <span>
-                        <span class="post-meta">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
       <time datetime="2018-07-11T15:25:26.226Z" itemprop="datePublished">
           2018-07-11
       </time>
     
 </span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        非参数估计非参数估计能处理任意的概率分布，而无需假设密度函数，主要的方法有直方图估计,K-NN,parzen窗估计。
-非参数估计的主要思想是，向量落入一个区域R的概率P为所以可以通过统计概率P来得到概率密度函数p(x)
-其中直方图估计是最简单的一种：
-
-把x的每个分量分成k 个等间隔小窗，   （ x∈Ed ，则形成kd 个小舱）
-统计落入各个小舱内的样本数qi
-相应小舱的概率密度为： qi /(NV )  （ N ：样本 总数，V ：
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2018/07/11/非参数估计/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
+                <h1></h1>
             </div>
         </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2018/07/02/HashMap解析/"></a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2018-07-02T14:24:36.697Z" itemprop="datePublished">
-          2018-07-02
-      </time>
+        <div class="col-md-8 col-md-offset-2">
+      		<h2 id="非参数估计"><a href="#非参数估计" class="headerlink" title="非参数估计"></a>非参数估计</h2><p>非参数估计能处理任意的概率分布，而无需假设密度函数，主要的方法有直方图估计,K-NN,parzen窗估计。</p>
+<p>非参数估计的主要思想是，向量落入一个区域R的概率P为<br><img src="./图片1.png" alt="Alt text"><br>所以可以通过统计概率P来得到概率密度函数p(x)</p>
+<p>其中直方图估计是最简单的一种：</p>
+<ol>
+<li>把x的每个分量分成k 个等间隔小窗，<br>   （ x∈Ed ，则形成kd 个小舱）</li>
+<li>统计落入各个小舱内的样本数qi</li>
+<li>相应小舱的概率密度为： qi /(NV )<br>  （ N ：样本 总数，V ：小舱体积）</li>
+</ol>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a><strong>原理</strong></h3><p>假设N个样本的集合X={x1,x2,x3,x4…}是根据概率密度P(x)的分布独立抽取到的，<br>那么K个样本落入区域R的概率服从二项分布：<br><img src="./1531312766785.png" alt="Alt text"><br>K的期望值是E(k) = NP<br>对P的估计<img src="./1531312939381.png" alt="Alt text">（N趋于∞大时，非常准确）<br>假设p(x)是连续的，且R足够小使得p(x)在R内几乎没有变化。<br>令R是包含样本点x的一个区域，其体积为V，设有N个训练样本，其中有k落在区域R中，则可对概率密度作出一个估计：<br><img src="./1531314537757.png" alt="Alt text">     <img src="./1531314548624.png" alt="Alt text"><br><img src="./1531314574489.png" alt="Alt text"><br>要求估计的概率密度函数收敛到真实值<br><img src="./1531314650044.png" alt="Alt text"><br>必须满足：<br><img src="./1531314679813.png" alt="Alt text">   <img src="./1531314697357.png" alt="Alt text">   <img src="./1531314710960.png" alt="Alt text"><br><img src="./1531314879627.png" alt="Alt text"></p>
+<p>###<strong>Parzen窗估计</strong><br>首先需要选择窗函数<br>方窗函数：<img src="./1531315033019.png" alt="Alt text"><br>正太分布窗函数：<img src="./1531315055948.png" alt="Alt text"><br>指数窗函数：<img src="./1531315073192.png" alt="Alt text"><br>其中<img src="./1531315266191.png" alt="Alt text"><br>Parzen估计的性能与窗宽参数hn紧密相关<br>当hn较大时，x和中心xi距离大小的影响程度变弱，估计的p(x)较为平滑，分辨率较差。<br>当hn较小时，x和中心xi距离大小的影响程度变强，估计的p(x)较为尖锐，分辨率较好。</p>
+<p>Parzen窗密度估计的渐近收敛性：<br> 渐进无偏性：<br><img src="./1531315382236.png" alt="Alt text"></p>
+<p> 一致性：</p>
+<p><img src="./1531315391028.png" alt="Alt text"><br>简单的例子：对于一个二类（ ω1 ，ω2 ）识别问题，随机抽取ω1类的6个样本X=(x1，x2，…. x6)<br>    ω1=(x1，x2，…. x6)<br>         =(x1=3.2，x2=3.6，x3=3，x4=6，x5=2.5，x6=1.1)<br>    估计P(x|ω1)即PN(x)：<br>    选择正太分布窗函数<img src="./1531315518914.png" alt="Alt text"><br>因为这里的数据时一维的，所以Vn=hn<br><img src="./1531315619740.png" alt="Alt text"><br><img src="./1531315710935.png" alt="Alt text"><br>简单的代码实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from pandas import Series</span><br><span class="line">data = np.sort(np.array( [3.2,3.6,3,6,2.5,1.1]))</span><br><span class="line">hi = 0.5/np.sqrt(6)</span><br><span class="line">N = 6</span><br><span class="line">hn = hi/np.sqrt(N)	</span><br><span class="line">Vn = hn</span><br><span class="line">a = np.zeros(6)</span><br><span class="line">i = 0</span><br><span class="line">for x in data:</span><br><span class="line">	k = 0</span><br><span class="line">	for xi in data:</span><br><span class="line">		k = (1/np.sqrt(2*np.pi))*np.exp(-0.5*(np.square(np.abs(x-xi)/hn)))+k</span><br><span class="line">	a[i] = k/(Vn*N)</span><br><span class="line">	i = i+1	</span><br><span class="line">obj = Series(a,index=data)</span><br><span class="line">obj.plot()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="./N3~Y}TASKP`UD48]~F9ELC.png" alt="Alt text"></p>
+<p><img src="./1531316357991.png" alt="Alt text"></p>
+<p>由图看出，每个样本对估计的贡献与样本间的距离有关，样本越多，PN(x)越准确。</p>
+<p>优点<br>由前面的例子可以看出， Parzen窗估计的优点是应用的普遍性。对规则分布，非规则分布，单锋或多峰分布都可用此法进行密度估计。<br>可以获得较为光滑且分辨率较高的密度估计，实现了光滑性和分辨率之间的一个较好平衡。<br>缺点<br>要求样本足够多，才能有较好的估计。因此使计算量，存储量增大。<br>窗宽在整个样本空间固定不变，难以获得区域自适应的密度估计。</p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
     
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        HashMap
-Map接口定义了子类必须实现的方法和内部接口Entry12345K getKey();V getValue();V setValue(V value);boolean equals(Object o);int hashCode();
-
-
-HashMap中实现的Entry123456static class Entry&lt;K,V&gt; implements Map.Entry&lt;K,V&gt; &#123;   
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2018/07/02/HashMap解析/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2018/06/24/hello-world/">Hello World</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2018-06-24T08:57:27.781Z" itemprop="datePublished">
-          2018-06-24
-      </time>
     
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick StartCreate a new p
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2018/06/24/hello-world/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <nav class="pagination" role="pagination">
-          
-          
-        </nav>
+    <a class="pull-right" href="/2018/07/02/HashMap解析/">
+         →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
     </div>
 </section>
-<section id="statement">
-    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
-        <div class="row">
-            <p>walk in</p>
-        </div>
-    </div>
-</section>
-<!-- ============================ END Content =========================== -->
+
 
       
 <!-- ============================ Footer =========================== -->
